@@ -1,0 +1,37 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Project List</h2>
+        <div class="row">
+            <div class="col-2"><a [routerLink]="['/create-project']" class="btn btn-md btn-info">Add New Project</a>
+            </div>
+            <div class="col-2"><a [routerLink]="['/create-cost']" class="btn btn-md btn-warning">Add Project Cost</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Organization</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Total Cost</th>
+                    <th scope="col">Action</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of allproject">
+                    <th scope="row">{{project.id}}</th>
+                    <td>{{project.organization}}</td>
+                    <td>{{project.title}}</td>
+                    <td>{{project?.totalCost}}</td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger" (click)="projectDelete(project.id)">Delete</button>
+
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

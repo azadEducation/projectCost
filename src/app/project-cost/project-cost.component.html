@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-header">
+        <h2> Create Project Cost</h2>
+        <a [routerLink]="['/']" class="btn btn-md btn-info">Back to Project List</a>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="projectCostForm" (ngSubmit)="saveProjectCost()">
+            <div class="form-group">
+                <label for="pro-select">Project Name</label>
+                <select class="form-control" id="pro-select" formControlName="project">
+                    <option value="">Select Project</option>
+                    <option value="{{project.id}}" *ngFor="let project of allproject">{{project.title}}</option>
+                </select>
+            </div>
+            <br>
+            <button type="button" class="btn btn-info btn-sm" (click)="addRow()">Add More</button>
+            <br>
+            <div class="row" *ngFor="let row of addDynamicRow?.controls;let index=index;">
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="pro-duration">Project Duration</label>
+                        <input type="number" class="form-control" id="pro-duration"
+                            placeholder="Enter here project duration" formControlName="duration">
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label for="pro-cost">Project Cost</label>
+                        <input type="number" class="form-control" id="pro-cost" placeholder="Enter here project cost"
+                            formControlName="cost">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger btn-sm" (click)="removeRow(index)">Remove Row</button>
+
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+</div>

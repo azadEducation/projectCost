@@ -1,0 +1,89 @@
+<div class="card">
+    <div class="card-header">
+        <h2>Create Project</h2>
+        <a [routerLink]="['/']"  class="btn btn-md btn-info">Back to Project List</a>
+    </div>
+    <div class="card-body">
+        <form [formGroup]="projectForm" (ngSubmit)="saveProject()">
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="org-select">Organization</label>
+                        <select class="form-control" id="org-select" formControlName="organization">
+                            <option value="">Select Organization</option>
+                            <option value="google">Google</option>
+                            <option value="facebook">Facebook</option>
+                            <option value="twitter">Twitter</option>
+                        </select>
+                    </div>
+                    <span class="help-block text-danger" *ngIf="f.organization.errors?.required && submited">Please Select any organization</span>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="cate-select">Category</label>
+                        <select class="form-control" id="cate-select" formControlName="category">
+                            <option value="">Select Category</option>
+                            <option value="technical">Technical</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="sales">Sales</option>
+                            <option value="accounts">Accounts</option>
+                        </select>
+                    </div>
+                    <span class="help-block text-danger" *ngIf="f.category.errors?.required && submited">Please Select any category</span>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="org-select">Activity</label>
+                        <select class="form-control" id="org-select" formControlName="activity">
+                            <option value="">Select Activity</option>
+                            <option value="agriculture">Agriculture</option>
+                            <option value="fitness">Fitness</option>
+                            <option value="bisiting">Visiting</option>
+                        </select>
+                    </div>
+                    <span class="help-block text-danger" *ngIf="f.activity.errors?.required && submited">Please Select any activity</span>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter here title" formControlName="title">
+                      </div>
+                      <span class="help-block text-danger" *ngIf="f.title.errors?.required && submited">Please enter title</span>
+                </div>
+            </div>
+            <br>
+           <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="min-age">Minimum Age</label>
+                    <input type="number" class="form-control" id="min-age" placeholder="Enter here minimum age" formControlName="minAge" max="100">
+                  </div>
+                  <span class="help-block text-danger" *ngIf="f.minAge.errors?.required && submited">Please enter minimum age</span>
+
+                  <span class="help-block text-danger" *ngIf="f.minAge.errors?.max && submited">Please enter valid age</span>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label for="max-age">maximum Age</label>
+                    <input type="number" class="form-control" id="max-age" placeholder="Enter here maximum age" formControlName="maxAge" max="100">
+                  </div>
+                  <span class="help-block text-danger" *ngIf="f.maxAge.errors?.required && submited">Please enter maximum age</span>
+
+                  <span class="help-block text-danger" *ngIf="f.maxAge.errors?.max && submited">Please enter valid age</span>
+            </div>
+           </div>
+           <br>
+            <div class="form-group">
+                <label for="desc">Overview Description</label>
+                <textarea class="form-control" id="desc" rows="3" formControlName="desc"></textarea>
+            </div>
+            <span class="help-block text-danger" *ngIf="f.organization.errors?.required && submited">Please  enter description</span>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+</div>
